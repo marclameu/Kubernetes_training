@@ -27,6 +27,5 @@ spec:
               name: story-volume
       volumes:
         - name: story-volume
-          hostPath:
-            path: /home/marclameu/KUBERNETES/kub-data-01-starting-setup/data
-            type: DirectoryOrCreate
+          persistentVolumeClaim:
+            claimName: host-pvc
