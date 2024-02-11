@@ -27,4 +27,6 @@ spec:
               name: story-volume
       volumes:
         - name: story-volume
-          emptyDir: {}
+          hostPath:
+            path: /home/marclameu/KUBERNETES/kub-data-01-starting-setup/data
+            type: DirectoryOrCreate
