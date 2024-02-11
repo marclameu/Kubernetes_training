@@ -8,6 +8,7 @@ spec:
   volumeMode: Filesystem
   accessModes:
     - ReadWriteOnce
+  storageClassName: local-path # use the command kubectl get storageclass to see the available storage classes
   hostPath:
     path: /home/marclameu/KUBERNETES/kub-data-01-starting-setup/data
     type: DirectoryOrCreate

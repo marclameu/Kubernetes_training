@@ -6,6 +6,7 @@ spec:
   volumeName: host-pv
   accessModes:
     - ReadWriteOnce
+  storageClassName: local-path # use the command kubectl get storageclass to see the available storage classes
   resources:
     requests:
       storage: 1Gi
