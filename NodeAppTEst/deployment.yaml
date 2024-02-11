@@ -4,9 +4,14 @@ metadata:
   name: second-app-deployment
 spec:
   selector:
-    matchLabels:
-      app: second-app
-      tier: backend
+    matchExpressions:
+      - key: app
+        operator: In
+        values:
+          - second-app
+    #matchLabels:
+      # app: second-app
+      # tier: backend
   replicas: 3
   template:     
     metadata:
