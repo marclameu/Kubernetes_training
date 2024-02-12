@@ -18,7 +18,4 @@ spec:
           env:
             - name: AUTH_ADRESS
               value: localhost
-        - name: auth
-          image: marclameu/kub-demo-auth:latest
-
 
