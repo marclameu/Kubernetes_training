@@ -1,0 +1,29 @@
+pipeline {
+    agent any 
+
+    stages {
+        stage('Build image') {
+            app = docker.build("users-api")
+
+            steps {
+                // This is where you would add the steps to compile your project.
+                // For example, if you're using Maven:
+                // sh 'mvn clean install'
+                echo 'Building..'
+            }
+        }
+        stage('Test image'){
+            app.inside {
+                // This is where you would add the steps to test your project.
+                // For example, if you're using Maven:
+                // sh 'mvn test'
+                echo 'Testing...'            
+        }
+        stage('Deploy'){
+            steps{
+                // This is where you would add the steps to deploy your project.
+                echo 'Deploying....'
+            }
+        }
+    }
+}
