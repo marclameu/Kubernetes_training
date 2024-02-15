@@ -22,7 +22,7 @@ pipeline {
                     docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
                         def dockerApp = docker.build("marclameu/users-api:${env.BUILD_ID}", '-f kub-network-01-starting-setup/users-api/Dockerfile .')
                         dockerApp.push('latest')
-                        dockerApp.push('${env.BUILD_ID}')
+                        dockerApp.push("${env.BUILD_ID}")
                     }
                 }
             }
