@@ -1,7 +1,7 @@
 pipeline {
     agent {
         dockerFile {
-            filename 'Dockerfile'
+            filename './Dockerfile'
             dir 'build'
             label 'user-api-img'            
         }
