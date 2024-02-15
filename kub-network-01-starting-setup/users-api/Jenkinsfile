@@ -12,15 +12,14 @@ pipeline {
         stage('Build Image') {
             steps {
                 script {
-                    def dockerApp = docker.build("marclameu/users-api:${env.BUILD_ID}", '-f kub-network-01-starting-setup/users-api/Dockerfile .')
+                    def dockerApp = docker.build("marclameu/kub-demo-users:${env.BUILD_ID}", '-f kub-network-01-starting-setup/users-api/Dockerfile .')
                 }
             }
         }
         stage('Push Image') {
             steps {
                 script {
-                    docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
-                        def dockerApp = docker.build("marclameu/users-api:${env.BUILD_ID}", '-f kub-network-01-starting-setup/users-api/Dockerfile .')
+                    docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {                        
                         dockerApp.push('latest')
                         dockerApp.push("${env.BUILD_ID}")
                     }
