@@ -1,0 +1,43 @@
+import jenkins.plugins.docker.workflow.*
+
+pipeline {
+    agent any
+
+    stages {
+        stage('show current directory content') {
+            steps {
+                sh 'ls -la'
+            }
+        }
+        stage('Build Image') {
+            steps {
+                script {
+                    def dockerApp = docker.build("marclameu/kub-demo-tasks:${env.BUILD_ID}", '-f kub-network-01-starting-setup/tasks-api/Dockerfile .')
+                }
+            }
+        }
+        stage('Push Image') {
+            steps {
+                script {
+                    docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
+                        def dockerApp = docker.build("marclameu/tasks-api:${env.BUILD_ID}", '-f kub-network-01-starting-setup/tasks-api/Dockerfile .')
+                        dockerApp.push('latest')
+                        dockerApp.push("${env.BUILD_ID}")
+                    }
+                }
+            }
+        }
+        stage('Deploy Kubernetes') {
+            steps {
+                script {
+                    //def kubeconfig = readYaml file: 'kub-network-01-starting-setup/kubernetes/users-services.yaml'
+                    withKubeConfig([credentialsId: 'kubeconfig']) {
+                        sh 'kubectl apply -f kub-network-01-starting-setup/kubernetes/tasks-services.yaml'
+                        sh 'kubectl apply -f kub-network-01-starting-setup/kubernetes/tasks-deployment.yaml'
+                    }
+                    
+                }
+            }
+        }
+    }
+}
