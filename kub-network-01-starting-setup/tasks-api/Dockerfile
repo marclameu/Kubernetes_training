@@ -6,7 +6,7 @@ COPY kub-network-01-starting-setup/users-api/package.json .
 
 RUN npm install
 
-COPY . .
+COPY kub-network-01-starting-setup/users-api/ .
 
 EXPOSE 8000
 
