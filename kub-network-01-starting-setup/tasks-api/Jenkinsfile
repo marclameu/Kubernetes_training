@@ -13,7 +13,7 @@ pipeline {
             steps {
                 script {
                     dir('kub-network-01-starting-setup/tasks-api') {
-                        dockerapp = docker.build("marclameu/kub-demo-tasks:${env.BUILD_ID}", '-f kub-network-01-starting-setup/tasks-api/Dockerfile .')
+                        dockerapp = docker.build("marclameu/kub-demo-tasks:latest", '-f kub-network-01-starting-setup/tasks-api/Dockerfile .')
                     }
                 }
             }
@@ -24,7 +24,7 @@ pipeline {
                     dir('kub-network-01-starting-setup/tasks-api') {
                         docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {                        
                             dockerapp.push('latest')
-                            dockerapp.push("${env.BUILD_ID}")
+                            //dockerapp.push("${env.BUILD_ID}")
                         }
                     }
                 }
