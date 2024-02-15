@@ -1,8 +1,7 @@
 import jenkins.plugins.docker.workflow.*
 
 pipeline {
-    agent any
-    def dockerApp
+    agent any    
 
     stages {
         stage('show current directory content') {
@@ -13,7 +12,7 @@ pipeline {
         stage('Build Image') {
             steps {
                 script {
-                    dockerApp = docker.build("marclameu/kub-demo-auth:${env.BUILD_ID}", '-f kub-network-01-starting-setup/auth-api/Dockerfile .')
+                    dockerapp = docker.build("marclameu/kub-demo-auth:${env.BUILD_ID}", '-f kub-network-01-starting-setup/auth-api/Dockerfile .')
                 }
             }
         }
@@ -21,8 +20,8 @@ pipeline {
             steps {
                 script {
                     docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {                        
-                        dockerApp.push('latest')
-                        dockerApp.push("${env.BUILD_ID}")
+                        dockerapp.push('latest')
+                        dockerapp.push("${env.BUILD_ID}")
                     }
                 }
             }
