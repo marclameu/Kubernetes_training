@@ -27,5 +27,17 @@ pipeline {
                 }
             }
         }
+        stage('Deploy Kubernetes') {
+            steps {
+                script {
+                    //def kubeconfig = readYaml file: 'kub-network-01-starting-setup/kubernetes/users-services.yaml'
+                    withKubeConfig([credentialsId: 'kubeconfig']) {
+                        sh 'kubectl apply -f kub-network-01-starting-setup/kubernetes/users-services.yaml'
+                        sh 'kubectl apply -f kub-network-01-starting-setup/kubernetes/users-deployment.yaml'
+                    }
+                    
+                }
+            }
+        }
     }
 }
