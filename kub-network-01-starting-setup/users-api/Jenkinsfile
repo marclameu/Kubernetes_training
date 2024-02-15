@@ -1,6 +1,10 @@
 pipeline {
     agent {
-        dockerfile true
+        dockerFile {
+            filename 'Dockerfile'
+            dir 'build'
+            label 'user-api-img'            
+        }
     }
 
     stages {
