@@ -12,7 +12,7 @@ pipeline {
         stage('Build Image') {
             steps {
                 script {
-                    def dockerApp = docker.build("kub-network-01-starting-setup/marclameu/users-api", '-f Dockerfile .')
+                    def dockerApp = docker.build("marclameu/users-api", '-f kub-network-01-starting-setup/users-api/Dockerfile .')
                 }
             }
         }
