@@ -10,4 +10,8 @@ COPY kub-network-01-starting-setup/auth-api/ .
 
 EXPOSE 80
 
+#should write the current directory content
+RUN ls -la
+
+
 CMD [ "node", "auth-app.js" ]
