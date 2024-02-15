@@ -2,7 +2,7 @@ FROM node:14-alpine
 
 WORKDIR /app
 
-COPY package.json .
+COPY kub-network-01-starting-setup/users-api/package.json .
 
 RUN npm install
 
