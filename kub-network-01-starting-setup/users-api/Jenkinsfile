@@ -16,5 +16,16 @@ pipeline {
                 }
             }
         }
+        stage('Push Image') {
+            steps {
+                script {
+                    docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
+                        def dockerApp = docker.build("marclameu/users-api:${env.BUILD_ID}", '-f kub-network-01-starting-setup/users-api/Dockerfile .')
+                        dockerApp.push('latest')
+                        dockerApp.push('${env.BUILD_ID}')
+                    }
+                }
+            }
+        }
     }
 }
