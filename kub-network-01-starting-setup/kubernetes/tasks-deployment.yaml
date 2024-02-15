@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: tasks
-          image: marclameu/kub-demo-tasks:39
+          image: marclameu/kub-demo-tasks:lastest
           env:
             - name: AUTH_ADRESS
               value: "auth-service.default"
