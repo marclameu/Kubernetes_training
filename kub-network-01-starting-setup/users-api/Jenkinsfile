@@ -1,3 +1,5 @@
+import jenkins.plugins.docker.workflow.*
+
 pipeline {
     agent any
 
@@ -5,9 +7,7 @@ pipeline {
         stage('Build Image') {
             steps {
                 script {
-                    def dockerApp = docker.build("marclameu/users-api", '-f Dockerfile .'){
-                        
-                    }
+                    def dockerApp = docker.build("marclameu/users-api", '-f Dockerfile .')
                 }
             }
         }
