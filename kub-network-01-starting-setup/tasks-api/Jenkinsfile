@@ -13,7 +13,7 @@ pipeline {
             steps {
                 script {
                     dir('kub-network-01-starting-setup/tasks-api') {
-                        dockerapp = docker.build("marclameu/kub-demo-tasks:latest", '-f kub-network-01-starting-setup/tasks-api/Dockerfile .')
+                        dockerapp = docker.build("marclameu/kub-demo-tasks:latest", '-f /Dockerfile .')
                     }
                 }
             }
