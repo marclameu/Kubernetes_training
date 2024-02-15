@@ -2,11 +2,11 @@ FROM node:14-alpine
 
 WORKDIR /app
 
-COPY kub-network-01-starting-setup/users-api/package.json .
+COPY package.json .
 
 RUN npm install
 
-COPY kub-network-01-starting-setup/users-api/ .
+COPY . .
 
 EXPOSE 8080
 
