@@ -4,6 +4,8 @@ WORKDIR /app
 
 COPY kub-network-01-starting-setup/auth-api/package.json .
 
+RUN ls -la
+
 RUN npm install
 
 COPY kub-network-01-starting-setup/auth-api/ .
