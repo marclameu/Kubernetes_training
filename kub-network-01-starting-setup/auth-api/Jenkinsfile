@@ -12,7 +12,9 @@ pipeline {
         stage('Build Image') {
             steps {
                 script {
+                    sh 'ls -la'
                     dir('kub-network-01-starting-setup/auth-api') {
+                        sh 'ls -la'
                         dockerapp = docker.build("marclameu/kub-demo-auth:${env.BUILD_ID}", '-f kub-network-01-starting-setup/auth-api/Dockerfile .')
                     }
                 }
