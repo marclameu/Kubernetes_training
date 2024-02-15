@@ -31,7 +31,7 @@ app.post('/signup', async (req, res) => {
     console.log(err);
     return res
       .status(500)
-      .json({ message: 'Creating the user failed - please try again later.' });
+      .json({ message: 'Creating the user failed - please try again later, ok?' });
   }
 });
 
