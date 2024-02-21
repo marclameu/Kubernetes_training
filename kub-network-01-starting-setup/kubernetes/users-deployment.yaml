@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: users
-          image: marclameu/kub-demo-users:latest
+          image: marclameu/kub-demo-users:2.0.0
           env:
             - name: AUTH_ADRESS              
               value: "auth-service.default"

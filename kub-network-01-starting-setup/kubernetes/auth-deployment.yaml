@@ -14,4 +14,4 @@ spec:
     spec:
       containers:
         - name: auth
-          image: marclameu/kub-demo-auth:latest
+          image: marclameu/kub-demo-auth:2.0.0
