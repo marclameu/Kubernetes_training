@@ -14,7 +14,7 @@ pipeline {
                 script {                    
                     dir('kub-network-01-starting-setup/users-api') {
                         sh 'ls -la'
-                        dockerapp = docker.build("marclameu/kub-demo-users:latest", '-f Dockerfile .')
+                        dockerapp = docker.build("marclameu/kub-demo-users:2.0.0", '-f Dockerfile .')
                     }
                 }
             }
